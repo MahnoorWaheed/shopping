@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shoppingapp/utils/utils.dart';
@@ -15,7 +17,7 @@ class ShoeDetails extends StatefulWidget {
 class _ShoeDetailsState extends State<ShoeDetails> {
 final List<String> sizes=["US 8", "US 9", "US 10", "US 11", "US 12"];
 
-bool isTapped= false;
+int? isTapped;
 
 
   @override
@@ -84,53 +86,57 @@ bool isTapped= false;
                   height: ScreenHeight(context)*0.08,
                   width: ScreenWidth(context),
                   child: ListView.builder(
-                  
-                  physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-
+                    physics: const BouncingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     itemCount: sizes.length,
-                    itemBuilder: (ctx, index){
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: GestureDetector(
-                        onTap: (){
-                          isTapped=!isTapped;
+                    itemBuilder: (ctx, index) {
+                      return GestureDetector(
+                        onTap: () {
                           setState(() {
-                           
+                            isTapped = index;
+                            log('I am clicked: hello $index');
                           });
                         },
                         child: Container(
+                          margin: const EdgeInsets.all(8.0),
                           width: 70,
                           decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.grey
-                            ),
-                                 gradient:const LinearGradient(
-                                  begin: Alignment.centerLeft,
-                                  end: Alignment.centerRight,
-                                  colors: [
-                                    Color(0xffFFA984),
-                                    Color(0xffFF793F)
-                                  ],
-                                ),
-                                //color: isTapped==true?Colors.black:Colors.amberAccent,
-                                
-                           borderRadius: BorderRadius.circular(15),
+                            border: Border.all(color: Colors.grey),
+                            gradient: isTapped == index
+                                ? const LinearGradient(
+                                    begin: Alignment.centerLeft,
+                                    end: Alignment.centerRight,
+                                    colors: [
+                                      Color(0xffFFA984),
+                                      Color(0xffFF793F)
+                                    ],
+                                  )
+                                : const LinearGradient(
+                                    begin: Alignment.centerLeft,
+                                    end: Alignment.centerRight,
+                                    colors: [
+                                      Color(0xffffffff),
+                                      Color(0xffffffff)
+                                    ],
+                                  ),
+                            // color: isTappedIndex == index
+                            //     ? Colors.black
+                            //     : Colors.amberAccent,
+                            borderRadius: BorderRadius.circular(15),
                           ),
                           child: Center(
                             child: Text(
                               sizes[index],
                               style: GoogleFonts.poppins(
-                                color:Colors.white, 
-                                fontSize: 18
-                                ),
-                              ),
+                                  color: isTapped == index
+                                      ? Colors.white
+                                      : Colors.black54,
+                                  fontSize: 18),
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  }
-                  ),
+                      );
+                    }),
                 ),
               ),
               Row(
