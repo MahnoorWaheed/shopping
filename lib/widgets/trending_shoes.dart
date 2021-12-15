@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shoppingapp/screens/details.dart';
+import 'package:shoppingapp/utils/utils.dart';
 import 'package:shoppingapp/widgets/reusable_orange_container.dart';
 
 class TrendingShoes extends StatelessWidget {
@@ -18,21 +19,23 @@ class TrendingShoes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, 
-          ), 
-          itemCount: name.length,
-        itemBuilder: (ctx, index){
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: GestureDetector(
+      
+      child: Padding(
+       padding: const EdgeInsets.symmetric(horizontal:5.0),
+        child: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, 
+            ), 
+            itemCount: name.length,
+          itemBuilder: (ctx, index){
+            return GestureDetector(
               onTap: (){
                 Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>Details()));
               },
               child: Container(
-                height: 100,
-                width: 100,
+                margin: EdgeInsets.symmetric(horizontal: 3, vertical:2),
+                height: ScreenHeight(context)*0.25,
+                width: ScreenHeight(context)*0.5,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
@@ -60,14 +63,14 @@ class TrendingShoes extends StatelessWidget {
                       fontWeight: FontWeight.w900, fontSize: 18),),
                       Text(name[index],
                       style: GoogleFonts.poppins(
-                       fontSize: 18, color:Colors.grey),
+                       fontSize: 15, color:Colors.grey),
                       )
                   ],
                 ),
               ),
-            ),
-          );
-        }),
+            );
+          }),
+      ),
     );
   }
 }
