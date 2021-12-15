@@ -15,7 +15,8 @@ class ShoeDetails extends StatefulWidget {
 class _ShoeDetailsState extends State<ShoeDetails> {
 final List<String> sizes=["US 8", "US 9", "US 10", "US 11", "US 12"];
 
-bool selectedIndex= false;
+bool isTapped= false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -79,30 +80,41 @@ bool selectedIndex= false;
             ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal:8.0),
-                child: GestureDetector(
-                  child: Container(
-                    height: ScreenHeight(context)*0.08,
-                    width: ScreenWidth(context),
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: sizes.length,
-                      itemBuilder: (ctx, index){
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: ScreenHeight(context)*0.08,
+                  width: ScreenWidth(context),
+                  child: ListView.builder(
+                  
+                  physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+
+                    scrollDirection: Axis.horizontal,
+                    itemCount: sizes.length,
+                    itemBuilder: (ctx, index){
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: GestureDetector(
+                        onTap: (){
+                          isTapped=!isTapped;
+                          setState(() {
+                           
+                          });
+                        },
                         child: Container(
-                          width: 80,
+                          width: 70,
                           decoration: BoxDecoration(
                             border: Border.all(
                               color: Colors.grey
                             ),
-                            gradient:const LinearGradient(
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-            colors: [
-              Color(0xffFFA984),
-              Color(0xffFF793F)
-            ],
-          ),
+                                 gradient:const LinearGradient(
+                                  begin: Alignment.centerLeft,
+                                  end: Alignment.centerRight,
+                                  colors: [
+                                    Color(0xffFFA984),
+                                    Color(0xffFF793F)
+                                  ],
+                                ),
+                                //color: isTapped==true?Colors.black:Colors.amberAccent,
+                                
                            borderRadius: BorderRadius.circular(15),
                           ),
                           child: Center(
@@ -115,15 +127,10 @@ bool selectedIndex= false;
                               ),
                           ),
                         ),
-                      );
-                    }
-                    ),
+                      ),
+                    );
+                  }
                   ),
-                  onTap: (){
-                    setState(() {
-                      selectedIndex=!selectedIndex;
-                    });
-                  },
                 ),
               ),
               Row(
