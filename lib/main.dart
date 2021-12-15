@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoppingapp/screens/details.dart';
+import 'package:shoppingapp/screens/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       
       routes: {
         "/": (context) {
-          return const Details();
+          return HomePage();
         },
         
       },

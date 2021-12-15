@@ -81,7 +81,7 @@ int? isTapped;
               ),
             ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal:8.0),
+                padding: const EdgeInsets.symmetric(horizontal:10.0),
                 child: Container(
                   height: ScreenHeight(context)*0.08,
                   width: ScreenWidth(context),
@@ -101,7 +101,7 @@ int? isTapped;
                           margin: const EdgeInsets.all(8.0),
                           width: 70,
                           decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey),
+                            border: Border.all(color: Colors.grey.shade300),
                             gradient: isTapped == index
                                 ? const LinearGradient(
                                     begin: Alignment.centerLeft,
