@@ -26,7 +26,7 @@ class Details extends StatelessWidget {
             ),
            ShoePrice(),
            Image.asset("assets/images/shoe.png", 
-           height: ScreenHeight(context)*0.32,
+           height: ScreenHeight(context)*0.33,
            ),
            ShoeDetails(),
           ],

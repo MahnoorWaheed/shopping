@@ -1,9 +1,9 @@
+
+
 import 'dart:developer';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shoppingapp/model/home_model.dart';
 import 'package:shoppingapp/utils/utils.dart';
 import 'package:shoppingapp/widgets/home_text_rows.dart';
 import 'package:shoppingapp/widgets/reusable_orange_container.dart';
@@ -36,22 +36,22 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffE5E5E5),
-      bottomNavigationBar: CurvedNavigationBar(
+  //     bottomNavigationBar: CurvedNavigationBar(
         
-        buttonBackgroundColor: Color(0xffFF793F),
-   backgroundColor: Color(0xffE5E5E5),
-    items: <Widget>[
-      Icon(Icons.home, size: 20, 
-      ),
-      Icon(Icons.favorite, size: 20),
-      Icon(Icons.shopping_cart, size: 20),
-      Icon(Icons.message, size: 20),
-      Icon(Icons.person, size: 20),
-    ],
-    onTap: (index) {
+  //       buttonBackgroundColor: Color(0xffFF793F),
+  //  backgroundColor: Color(0xffE5E5E5),
+  //   items: <Widget>[
+  //     Icon(Icons.home, size: 20, 
+  //     ),
+  //     Icon(Icons.favorite, size: 20),
+  //     Icon(Icons.shopping_cart, size: 20),
+  //     Icon(Icons.message, size: 20),
+  //     Icon(Icons.person, size: 20),
+  //   ],
+  //   onTap: (index) {
       
-    },
-  ),
+  //   },
+  // ),
       body: SafeArea(
         child: Column(
           children: [

@@ -19,7 +19,7 @@ final String text;
         children: [
           Text(category, style: GoogleFonts.poppins(fontSize: 18, fontWeight: FontWeight.bold),),
           Text(text, 
-          style: GoogleFonts.poppins(color: Colors.orange, fontSize: 17, fontWeight: FontWeight.w900),
+          style: GoogleFonts.poppins(color: Color(0xffFF793F), fontSize: 15, fontWeight: FontWeight.bold),
           )
         ],
       ),
